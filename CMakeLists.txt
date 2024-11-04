@@ -14,7 +14,7 @@ option(build_examples "Build examples" ON)
 
 # DEPENDENCIES & Requirements
 
-find_package(Boost REQUIRED)
+find_package(Boost)
 
 if(NOT Boost_FOUND)
     message(WARNING "Boost not found. Using libdbcppp boost (third-party/boost)")
@@ -56,7 +56,6 @@ file(GLOB sources "src/*.cpp")
 
 add_library(${PROJECT_NAME} SHARED ${include} ${headers} ${sources})
 
-
 # CONFIGURE LIBRARY
 
 if (build_kcd)
@@ -71,6 +70,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_include_directories(${PROJECT_NAME} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/dbcppp>
     $<INSTALL_INTERFACE:include/dbcppp>
+    ${Boost_INCLUDE_DIRS}
     include/
 )
 
