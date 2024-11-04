@@ -14,7 +14,7 @@ option(build_examples "Build examples" ON)
 
 # DEPENDENCIES & Requirements
 
-find_package(Boost)
+find_package(Boost REQUIRED)
 
 if(NOT Boost_FOUND)
     message(WARNING "Boost not found. Using libdbcppp boost (third-party/boost)")
